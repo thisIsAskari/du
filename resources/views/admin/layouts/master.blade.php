@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('admin/vendors/slick/slick.css')}}">
     <link rel="stylesheet" href="{{asset('admin/vendors/slick/slick-theme.css')}}">
 
+    @yield('page_css')
     <!-- Vmap -->
     <link rel="stylesheet" href="{{asset('admin/vendors/vmap/jqvmap.min.css')}}">
 
@@ -155,6 +156,7 @@
 <script src="{{asset('admin/vendors/bundle.js')}}"></script>
 
 <script src="{{asset('admin/vendors/circle-progress/circle-progress.min.js')}}"></script>
+@yield('page_script')
 
 <script src="{{asset('admin/assets/js/examples/dashboard.js')}}"></script>
 <div class="colors"> <!-- To use theme colors with Javascript -->
