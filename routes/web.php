@@ -25,6 +25,11 @@ Auth::routes();
 
 Route::get('/','HomePageController@index')->name('home');
 Route::get('/pricing', 'PackageController@pricing')->name('pricing');
+Route::get('/aboutus', 'ContentController@aboutus')->name('aboutus');
+Route::get('/services', 'ContentController@services')->name('services');
+Route::get('/contactus','QureyController@index')->name('contact');
+
+Route::post('/contact','QureyController@store')->name('contact.store');
 
 Route::get('/admin/index','AdminController@index')->name('admin.index');
 
@@ -53,3 +58,15 @@ Route::get('/admin/package/{package}/edit','PackageController@edit')->name('pack
 Route::put('/admin/package/{package}/update','PackageController@update')->name('package.update');
 Route::delete('/admin/package/{package}/delete','PackageController@destroy')->name('package.destroy');
 
+Route::get('/admin/aboutus/edit','ContentController@editaboutus')->name('aboutus.edit');
+Route::put('/admin/aboutus/{aboutus}/update','ContentController@updateaboutus')->name('aboutus.update');
+
+Route::get('/admin/service','ContentController@index')->name('service.index');
+Route::get('/admin/service/create','ContentController@create')->name('service.create');
+Route::post('/admin/service/store','ContentController@store')->name('service.store');
+Route::get('/admin/service/{content}/edit','ContentController@edit')->name('service.edit');
+Route::put('/admin/service/{content}/update','ContentController@update')->name('service.update');
+Route::delete('/admin/service/{service}/delete','ContentController@destroy')->name('service.destroy');
+
+Route::get('/admin/showallquries','QureyController@showall')->name('qurey.all');
+Route::delete('/admin/qurey/{qurey}/delete','QureyController@destroy')->name('qurey.destroy');

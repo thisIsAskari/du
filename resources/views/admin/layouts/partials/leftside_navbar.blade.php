@@ -1,6 +1,13 @@
 <div class="navigation-menu-body">
     <ul>
         <li class="navigation-divider">Main</li>
+
+        <li>
+            <a href="{{route('qurey.all')}}">
+                <i class="nav-link-icon" data-feather="users"></i>
+                <span>Quries</span>
+            </a>
+        </li>
         <li class="open">
             <a href="">
                 <i class="nav-link-icon" data-feather="bar-chart-2"></i>
@@ -24,6 +31,24 @@
             <ul>
                 <li><a href="{{route('package.index')}}">View All Packages</a></li>
                 <li><a href="{{route('package.create')}}">Add New Package</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="{{route('aboutus.edit')}}">
+                <i class="nav-link-icon" data-feather="users"></i>
+                <span>About</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="nav-link-icon" data-feather="menu"></i>
+                <span>Services</span>
+            </a>
+            <ul>
+                <li><a href="{{route('service.index')}}">View All Services</a></li>
+                <li><a href="{{route('service.create')}}">Add New Service</a></li>
             </ul>
         </li>
 

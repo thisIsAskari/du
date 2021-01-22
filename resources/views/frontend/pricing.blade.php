@@ -50,8 +50,8 @@
                                 <span>/mo</span>
                             </div>
                             <div class="image-box">
-                                <img src="assets/img/shape-image/2.png" alt="image">
-                                <img src="assets/img/shape-image/2.png" alt="image">
+                                <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
                             </div>
                         </div>
                     </div>

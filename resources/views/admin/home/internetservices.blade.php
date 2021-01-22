@@ -93,22 +93,28 @@
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Content 1</label>
                                                     <select name="section_two_content_one_id" class="form-control" id="exampleFormControlSelect1">
-                                                        <option value="1" >{{$home->section_two_content_one_id}}</option>
-                                                        <option value="0">No</option>
+                                                        @foreach($services as $service)
+                                                            @if($service->id == 1) @continue @endif
+                                                            <option value="{{$service->id}}" {{$home->section_two_content_one_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Content 2</label>
                                                     <select name="section_two_content_two_id" class="form-control" id="exampleFormControlSelect1">
-                                                        <option value="1">{{$home->section_two_content_two_id}}</option>
-                                                        <option value="0">No</option>
+                                                        @foreach($services as $service)
+                                                            @if($service->id == 1) @continue @endif
+                                                            <option value="{{$service->id}}" {{$home->section_two_content_two_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Content 3</label>
                                                     <select name="section_two_content_three_id" class="form-control" id="exampleFormControlSelect1">
-                                                        <option value="1">{{$home->section_two_content_three_id}}</option>
-                                                        <option value="0">No</option>
+                                                        @foreach($services as $service)
+                                                            @if($service->id == 1) @continue @endif
+                                                            <option value="{{$service->id}}" {{$home->section_two_content_three_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>

@@ -4,31 +4,62 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="Du_logo.png" width="10%">
+                    <img src="{{asset('/storage/images/logo/'.$home->logo)}}">
                     <!-- <h5 class="modal-title">Pop Up Form</h5> -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span style="color: white;" aria-hidden="true">&times;</span> </button>
                 </div>
-                <div class="modal-body">
-                    <!-- <h2 style="text-align: center;color:  #fa8185;">Welcome to du</h2> -->
+                <form method="POST" action="{{route('contact.store')}}">
+                    @csrf()
+                    <div class="modal-body">
 
-                    <form action="/action_page.php">
+                        <!-- <h2 style="text-align: center;color:  #fa8185;">Welcome to du</h2> -->
+                        @if(Session::has('contact'))
+
+                            <div class="alert alert-success" role="alert">
+                                {{Session::get('contact')}}
+                            </div>
+
+                        @endif
+
+
                         <label for="fname">Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        <input type="text" id="fname" name="username" placeholder="Your name.." value="{{old('uaername')}}">
+                        @if($errors->has('username'))
+                            <div class="error">
+                                {{ $errors->first('username') }}
+                            </div>
+                        @endif
 
                         <label for="lname">Area Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Area Name">
+                        <input type="text" id="lname" name="area_name" placeholder="Area Name" value="{{old('area_name')}}">
+                        @if($errors->has('area_name'))
+                            <div class="error">
+                                {{ $errors->first('area_name') }}
+                            </div>
+                        @endif
 
                         <label for="lname">Building No.</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Building No">
+                        <input type="text" id="lname" name="building_no" placeholder="Building No" value="{{old('builing_no')}}">
+                        @if($errors->has('building_no'))
+                            <div class="error">
+                                {{ $errors->first('building_no') }}
+                            </div>
+                        @endif
 
                         <label for="lname">Contact No.</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Contact No">
+                        <input type="text" id="lname" name="contact_no" placeholder="Contact No" value="{{old('contact_no')}}">
+                        @if($errors->has('contact_no'))
+                            <div class="error">
+                                {{ $errors->first('contact_no') }}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" style="background-color: #fa8185; color: white;" class="btn">Save changes</button>
+                    </div>
+                </form>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" style="background-color: #fa8185; color: white;" class="btn">Save changes</button>
-                </div>
             </div>
         </div>
     </div>
@@ -76,16 +107,20 @@
                         <div class="icon">
                             <i class="flaticon-speedometer"></i>
                         </div>
-                        <h3>Download 1Gbps</h3>
-                        <p>Lorem ipsum dolor sit do eiusmod sit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-                        <div class="back-icon">
-                            <i class="flaticon-speedometer"></i>
-                        </div>
-                        <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                        <div class="image-box">
-                            <img src="assets/img/shape-image/2.png" alt="image">
-                            <img src="assets/img/shape-image/2.png" alt="image">
-                        </div>
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_two_content_one_id)
+                                <h3>{{$service->main_title}}</h3>
+                                <p>{{$service->about_content}}</p>
+                                <div class="back-icon">
+                                    <i class="flaticon-speedometer"></i>
+                                </div>
+                                <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
+                                <div class="image-box">
+                                    <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                    <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -93,16 +128,20 @@
                         <div class="icon">
                             <i class="flaticon-speedometer-1"></i>
                         </div>
-                        <h3>99% Internet Uptime</h3>
-                        <p>Lorem ipsum dolor sit do eiusmod sit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-                        <div class="back-icon">
-                            <i class="flaticon-speedometer-1"></i>
-                        </div>
-                        <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                        <div class="image-box">
-                            <img src="assets/img/shape-image/2.png" alt="image">
-                            <img src="assets/img/shape-image/2.png" alt="image">
-                        </div>
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_two_content_two_id)
+                                <h3>{{$service->main_title}}</h3>
+                                <p>{{$service->about_content}}</p>
+                                <div class="back-icon">
+                                    <i class="flaticon-speedometer-1"></i>
+                                </div>
+                                <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
+                                <div class="image-box">
+                                    <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                    <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-md-3 offset-sm-3">
@@ -110,16 +149,20 @@
                         <div class="icon">
                             <i class="flaticon-support"></i>
                         </div>
-                        <h3>24/7 Customer Support</h3>
-                        <p>Lorem ipsum dolor sit do eiusmod sit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-                        <div class="back-icon">
-                            <i class="flaticon-support"></i>
-                        </div>
-                        <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                        <div class="image-box">
-                            <img src="assets/img/shape-image/2.png" alt="image">
-                            <img src="assets/img/shape-image/2.png" alt="image">
-                        </div>
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_two_content_three_id)
+                                <h3>{{$service->main_title}}</h3>
+                                <p>{{$service->about_content}}</p>
+                                <div class="back-icon">
+                                    <i class="flaticon-support"></i>
+                                </div>
+                                <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
+                                <div class="image-box">
+                                    <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                    <img src="{{asset('frontend/img/shape-image/2.png')}}" alt="image">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -164,90 +207,115 @@
                     <h2>{{$home->section_four_main_heading != null ? $home->section_four_main_heading : ''}}</h2>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="services-box">
-                            <div class="icon">
-                                <i class="flaticon-router"></i>
+
+                    @foreach($services as $service)
+                        @if($service->id == $home->section_four_content_one_id)
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="services-box">
+                                    <div class="icon">
+                                        <i class="flaticon-router"></i>
+                                    </div>
+                                    <h3>{{$service->main_title}}</h3>
+                                    <p>{{$service->about_content}}</p>
+
+                                    <div class="image-box">
+                                        <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                        <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                    </div>
+                                </div>
                             </div>
-                            <h3>Home Broadband</h3>
-                            <p>Lorem ipsu dolors itamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                            <div class="image-box">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="services-box">
-                            <div class="icon">
-                                <i class="flaticon-wifi-1"></i>
-                            </div>
-                            <h3>Home WIFI</h3>
-                            <p>Lorem ipsu dolors itamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                            <div class="image-box">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="services-box">
-                            <div class="icon">
-                                <i class="flaticon-wifi-signal-tower"></i>
-                            </div>
-                            <h3>Satellite TV</h3>
-                            <p>Lorem ipsu dolors itamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                            <div class="image-box">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="services-box">
-                            <div class="icon">
-                                <i class="flaticon-online-shop"></i>
-                            </div>
-                            <h3>Nexa TV Box</h3>
-                            <p>Lorem ipsu dolors itamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                            <div class="image-box">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="services-box">
-                            <div class="icon">
-                                <i class="flaticon-key"></i>
-                            </div>
-                            <h3>Mobile Connection</h3>
-                            <p>Lorem ipsu dolors itamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                            <div class="image-box">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="services-box">
-                            <div class="icon">
-                                <i class="flaticon-shield"></i>
-                            </div>
-                            <h3>Home Security</h3>
-                            <p>Lorem ipsu dolors itamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <a href="#" class="details-btn"><i class="flaticon-arrow-pointing-to-right"></i></a>
-                            <div class="image-box">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                                <img src="assets/img/shape-image/1.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_four_content_two_id)
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="services-box">
+                                        <div class="icon">
+                                            <i class="flaticon-router"></i>
+                                        </div>
+                                        <h3>{{$service->main_title}}</h3>
+                                        <p>{{$service->about_content}}</p>
+
+                                        <div class="image-box">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_four_content_three_id)
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="services-box">
+                                        <div class="icon">
+                                            <i class="flaticon-router"></i>
+                                        </div>
+                                        <h3>{{$service->main_title}}</h3>
+                                        <p>{{$service->about_content}}</p>
+
+                                        <div class="image-box">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_four_content_four_id)
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="services-box">
+                                        <div class="icon">
+                                            <i class="flaticon-router"></i>
+                                        </div>
+                                        <h3>{{$service->main_title}}</h3>
+                                        <p>{{$service->about_content}}</p>
+
+                                        <div class="image-box">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_four_content_five_id)
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="services-box">
+                                        <div class="icon">
+                                            <i class="flaticon-router"></i>
+                                        </div>
+                                        <h3>{{$service->main_title}}</h3>
+                                        <p>{{$service->about_content}}</p>
+
+                                        <div class="image-box">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        @foreach($services as $service)
+                            @if($service->id == $home->section_four_content_six_id)
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="services-box">
+                                        <div class="icon">
+                                            <i class="flaticon-router"></i>
+                                        </div>
+                                        <h3>{{$service->main_title}}</h3>
+                                        <p>{{$service->about_content}}</p>
+
+                                        <div class="image-box">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                            <img src="{{asset('frontend/img/shape-image/1.png')}}" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                 </div>
             </div>
         </section>

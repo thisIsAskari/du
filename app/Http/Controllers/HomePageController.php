@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Content;
 use App\HomePage;
 use App\Package;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class HomePageController extends Controller
     {
         $homepage = HomePage::find(1);
         $packages = Package::all();
-        return view('index',['home'=>$homepage,'packages'=>$packages]);
+        $services = Content::all();
+        return view('index',['home'=>$homepage,'packages'=>$packages,'services'=>$services]);
     }
     public function edithomeheader()
     {
@@ -68,7 +70,8 @@ class HomePageController extends Controller
     public function editinternetservices()
     {
         $homepage = HomePage::find(1);
-        return view('admin.home.internetservices',['home'=>$homepage]);
+        $services = Content::all();
+        return view('admin.home.internetservices',['home'=>$homepage,'services'=>$services]);
     }
 
     public function updateinternetservices(Request $request)
@@ -126,7 +129,8 @@ class HomePageController extends Controller
     public function editallservices()
     {
         $homepage = HomePage::find(1);
-        return view('admin.home.allservices',['home'=>$homepage]);
+        $services = Content::all();
+        return view('admin.home.allservices',['home'=>$homepage,'services'=>$services]);
     }
 
     public function updateallservices(Request $request)

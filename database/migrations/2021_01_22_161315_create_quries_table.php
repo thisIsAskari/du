@@ -13,8 +13,12 @@ class CreateQuriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quries', function (Blueprint $table) {
+        Schema::create('du-main.qureys', function (Blueprint $table) {
             $table->id();
+            $table->string('username')->nullable();
+            $table->string('area_name')->nullable();
+            $table->string('building_no')->nullable();
+            $table->bigInteger('contact_no')->nullable();
             $table->timestamps();
         });
     }

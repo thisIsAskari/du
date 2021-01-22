@@ -126,9 +126,9 @@
                         <ul class="navbar-nav">
                             <li class="nav-item"><a href="{{route('home')}}" class="nav-link active">Home </a></li>
                             <li class="nav-item"><a href="{{route('pricing')}}" class="nav-link">Pricing </a></li>
-                            <li class="nav-item"><a href="about-us-2.php" class="nav-link">About us</a></li>
-                            <li class="nav-item"><a href="services-2.php" class="nav-link">Services </a></li>
-                            <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+                            <li class="nav-item"><a href="{{route('aboutus')}}" class="nav-link">About us</a></li>
+                            <li class="nav-item"><a href="{{route('services')}}" class="nav-link">Services </a></li>
+                            <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
                         </ul>
 
                     </div>
@@ -154,14 +154,9 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <div class="logo">
-                        <a href="#"><img src="assets/img/logo.png" alt="image"></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sda.</p>
+                        <a href="#"><img src="{{asset('/storage/image/otherImage'.$home->section_three_image)}}" alt="image"></a>
+                        <p>{{$home->section_three_about}}</p>
                     </div>
-                    <form class="newsletter-form" data-toggle="validator">
-                        <input type="email" class="newsletter-input" placeholder="Your Email Address" name="EMAIL" required autocomplete="off">
-                        <button type="submit"><i class="flaticon-paper-plane"></i></button>
-                        <div id="validator-newsletter" class="form-result"></div>
-                    </form>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">

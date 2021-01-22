@@ -90,43 +90,55 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Content</label>
                                             <select name="section_four_content_one_id" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="1" >{{$home->section_four_content_one_id}}</option>
-                                                <option value="">No</option>
+                                                @foreach($services as $service)
+                                                    @if($service->id == 1) @continue @endif
+                                                    <option value="{{$service->id}}" {{$home->section_four_content_one_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Content</label>
                                             <select name="section_four_content_two_id" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="1">{{$home->section_four_content_two_id}}</option>
-                                                <option value="">No</option>
+                                                @foreach($services as $service)
+                                                    @if($service->id == 1) @continue @endif
+                                                    <option value="{{$service->id}}" {{$home->section_four_content_two_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Content</label>
                                             <select name="section_four_content_three_id" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="1">{{$home->section_four_content_three_id}}</option>
-                                                <option value="">No</option>
+                                                @foreach($services as $service)
+                                                    @if($service->id == 1) @continue @endif
+                                                    <option value="{{$service->id}}" {{$home->section_four_content_three_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Content</label>
                                             <select name="section_four_content_four_id" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="1">{{$home->section_four_content_four_id}}</option>
-                                                <option value="">No</option>
+                                                @foreach($services as $service)
+                                                    @if($service->id == 1) @continue @endif
+                                                    <option value="{{$service->id}}" {{$home->section_four_content_four_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Content</label>
                                             <select name="section_four_content_five_id" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="1">{{$home->section_four_content_five_id}}</option>
-                                                <option value="">No</option>
+                                                @foreach($services as $service)
+                                                    @if($service->id == 1) @continue @endif
+                                                    <option value="{{$service->id}}" {{$home->section_four_content_five_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Content</label>
                                             <select name="section_four_content_six_id" class="form-control" id="exampleFormControlSelect1">
-                                                <option value="1">{{$home->section_four_content_six_id}}</option>
-                                                <option value="">No</option>
+                                                @foreach($services as $service)
+                                                    @if($service->id == 1) @continue @endif
+                                                    <option value="{{$service->id}}" {{$home->section_four_content_six_id == $service->id ? 'selected' : ''}}>{{$service->main_title}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
