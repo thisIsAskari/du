@@ -110,40 +110,8 @@
     </div>
 @endsection
 @section('page_css')
-    <!-- Datepicker -->
-    <link rel="stylesheet" href="{{asset('admin/vendors/datepicker/daterangepicker.css')}}">
 
-    <!-- Slick -->
-    <link rel="stylesheet" href="{{asset('admin/vendors/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/vendors/slick/slick-theme.css')}}">
-
-    <!-- Vmap -->
-    <link rel="stylesheet" href="{{asset('admin/vendors/vmap/jqvmap.min.css')}}">
 @endsection
 @section('page_script')
-    <script src="{{asset('admin/vendors/charts/chartjs/chart.min.js')}}"></script>
 
-    <!-- Apex chart -->
-    <script src="{{asset('admin/vendors/charts/apex/apexcharts.min.js')}}"></script>
-
-    <!-- Circle progress -->
-    <script src="{{asset('admin/vendors/circle-progress/circle-progress.min.js')}}"></script>
-
-    <!-- Peity -->
-    <script src="{{asset('admin/vendors/charts/peity/jquery.peity.min.js')}}"></script>
-    <script src="{{asset('admin/assets/js/examples/charts/peity.js')}}"></script>
-
-    <!-- Datepicker -->
-    <script src="{{asset('admin/vendors/datepicker/daterangepicker.js')}}"></script>
-
-    <!-- Slick -->
-    <script src="{{asset('admin/vendors/slick/slick.min.js')}}"></script>
-
-    <!-- Vamp -->
-    <script src="{{asset('admin/vendors/vmap/jquery.vmap.min.js')}}"></script>
-    <script src="{{asset('admin/vendors/vmap/maps/jquery.vmap.usa.js')}}"></script>
-    <script src="{{asset('admin/assets/js/examples/vmap.js')}}"></script>
-
-    <!-- Dashboard scripts -->
-    <script src="{{asset('admin/assets/js/examples/dashboard.js')}}"></script>
 @endsection
