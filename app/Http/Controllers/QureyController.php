@@ -12,14 +12,14 @@ class QureyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'username'=>'required',
-            'area_name'=>'required',
-            'building_no'=>'required|numeric',
+            'username'=>'required|max:255',
+            'area_name'=>'required|max:255',
+            'building_no'=>'required|max:255',
             'contact_no'=>'required|numeric'
         ]);
         Qurey::create($request->all());
         Session::flash('contact','Request Submitted');
-        return redirect()->route('home');
+        return back();
     }
 
     public function index()
@@ -31,7 +31,8 @@ class QureyController extends Controller
     public function showall()
     {
         $quries = Qurey::all();
-        return view('admin.quries.index',['quries'=>$quries]);
+        $home = HomePage::find(1);
+        return view('admin.quries.index',['quries'=>$quries,'home'=>$home]);
     }
 
     public function destroy(Qurey $qurey)

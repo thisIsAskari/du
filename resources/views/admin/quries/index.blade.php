@@ -6,11 +6,11 @@
 
             <!-- begin::page-header -->
             <div class="page-header">
-                <h4>QQuries</h4>
+                <h4>Quries</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="#">Home</a>
+                            <a href="{{route('admin.index')}}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="{{route('qurey.all')}}">Quires</a>

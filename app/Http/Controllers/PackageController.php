@@ -13,12 +13,14 @@ class PackageController extends Controller
     public function index()
     {
         $packages = Package::all();
-        return view('admin.packages.index',['packages'=>$packages]);
+        $home = HomePage::find(1);
+        return view('admin.packages.index',['packages'=>$packages,'home'=>$home]);
     }
 
     public function create()
     {
-        return view('admin.packages.create');
+        $home = HomePage::find(1);
+        return view('admin.packages.create',['home'=>$home]);
     }
     public function store(Request $request)
     {
@@ -33,7 +35,8 @@ class PackageController extends Controller
 
     public function edit(Package $package)
     {
-        return view('admin.packages.edit',['package'=>$package]);
+        $home = HomePage::find(1);
+        return view('admin.packages.edit',['package'=>$package,'home'=>$home]);
     }
     public function update(Request $request,Package $package)
     {

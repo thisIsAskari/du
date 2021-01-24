@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Content;
+use App\FAQ;
 use App\HomePage;
 use App\Package;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class HomePageController extends Controller
         $homepage = HomePage::find(1);
         $packages = Package::all();
         $services = Content::all();
-        return view('index',['home'=>$homepage,'packages'=>$packages,'services'=>$services]);
+        $faqs     = FAQ::all();
+        return view('index',['home'=>$homepage,'packages'=>$packages,'services'=>$services,'faqs'=>$faqs]);
     }
     public function edithomeheader()
     {

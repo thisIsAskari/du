@@ -13,7 +13,8 @@ class ContentController extends Controller
     public function editaboutus()
     {
         $aboutus = Content::find(1);
-        return view('admin.aboutus.index',['aboutus'=>$aboutus]);
+        $home = HomePage::find(1);
+        return view('admin.aboutus.index',['aboutus'=>$aboutus,'home'=>$home]);
     }
 
     public function updateaboutus(Request $request)
@@ -58,12 +59,14 @@ class ContentController extends Controller
     public function index()
     {
         $services = Content::all();
-        return view('admin.services.index',['services'=>$services]);
+        $home = HomePage::find(1);
+        return view('admin.services.index',['services'=>$services,'home'=>$home]);
     }
 
     public function create()
     {
-        return view('admin.services.create');
+        $home = HomePage::find(1);
+        return view('admin.services.create',['home'=>$home]);
     }
 
     public function store(Request $request)
@@ -88,7 +91,8 @@ class ContentController extends Controller
 
     public function edit(Content $content)
     {
-        return view('admin.services.edit',['service'=>$content]);
+        $home = HomePage::find(1);
+        return view('admin.services.edit',['service'=>$content,'home'=>$home]);
     }
 
     public function update(Request $request, Content $content)

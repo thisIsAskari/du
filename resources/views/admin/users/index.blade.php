@@ -6,16 +6,16 @@
 
             <!-- begin::page-header -->
             <div class="page-header">
-                <h4>Packages</h4>
+                <h4>Users</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{route('admin.index')}}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('package.index')}}">Packages</a>
+                            <a href="{{route('faq.index')}}"></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">View All Packages</li>
+                        <li class="breadcrumb-item active" aria-current="page">View All Users</li>
                     </ol>
                 </nav>
             </div>
@@ -28,6 +28,11 @@
                             <div class="alert alert-success" role="alert">
                                 {{Session::get('message')}}
                             </div>
+
+                        @elseif(Session::has('alert-type') == 'error')
+                            <div class="alert alert-danger" role="alert">
+                                {{Session::get('message')}}
+                            </div>
                         @endif
 
                     @endif
@@ -37,35 +42,20 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Attribute 1</th>
-                                    <th>Attribute 2</th>
-                                    <th>Attribute 3</th>
-                                    <th>Attribute 4</th>
-                                    <th>Attribute 5</th>
-                                    <th>Attribute 6</th>
-                                    <th>Attribute 7</th>
-                                    <th>Attribute 8</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
                                     <th>Tools</th>
-                                </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($packages as $package)
-                                    <tr>
-                                        <th>{{$package->id}}</th>
-                                        <th>{{$package->name}}</th>
-                                        <th>{{$package->col_1}}</th>
-                                        <th>{{$package->col_2}}</th>
-                                        <th>{{$package->col_3}}</th>
-                                        <th>{{$package->col_4}}</th>
-                                        <th>{{$package->col_5}}</th>
-                                        <th>{{$package->col_6}}</th>
-                                        <th>{{$package->col_7}}</th>
-                                        <th>{{$package->col_8}}</th>
+                                @foreach($users as $user)
+                                    <tr {{$user->id == Auth::user()->id ? 'style=background-color:#4F7992' : ''}}>
+                                        <th>{{$user->id}}</th>
+                                        <th>{{$user->name}}</th>
+                                        <th>{{$user->email}}</th>
                                         <th>
-                                            <a href="{{route('package.edit',$package)}}"><i class="fa fa-edit"></i></a>
-                                            <form method="POST" action="{{route('package.destroy',$package)}}">
+                                            <a href="{{route('user.edit',$user)}}"><i class="fa fa-edit"></i></a>
+                                            <form method="POST" action="{{route('user.destroy',$user)}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button style="border: none;background-color: transparent;color: grey;" type="submit"><i class="fa fa-trash"></i></button>
@@ -79,15 +69,8 @@
                                 <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Attribute 1</th>
-                                    <th>Attribute 2</th>
-                                    <th>Attribute 3</th>
-                                    <th>Attribute 4</th>
-                                    <th>Attribute 5</th>
-                                    <th>Attribute 6</th>
-                                    <th>Attribute 7</th>
-                                    <th>Attribute 8</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
                                     <th>Tools</th>
                                 </tr>
                                 </tfoot>

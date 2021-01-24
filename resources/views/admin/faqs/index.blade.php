@@ -6,16 +6,16 @@
 
             <!-- begin::page-header -->
             <div class="page-header">
-                <h4>Packages</h4>
+                <h4>FAQ'S</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{route('admin.index')}}">Dashboard</a>
+                            <a href="#">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('package.index')}}">Packages</a>
+                            <a href="{{route('faq.index')}}">FAQ'S</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">View All Packages</li>
+                        <li class="breadcrumb-item active" aria-current="page">View All FAQ'S</li>
                     </ol>
                 </nav>
             </div>
@@ -37,35 +37,21 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Attribute 1</th>
-                                    <th>Attribute 2</th>
-                                    <th>Attribute 3</th>
-                                    <th>Attribute 4</th>
-                                    <th>Attribute 5</th>
-                                    <th>Attribute 6</th>
-                                    <th>Attribute 7</th>
-                                    <th>Attribute 8</th>
+                                    <th>Question</th>
+                                    <th>Answer</th>
                                     <th>Tools</th>
-                                </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($packages as $package)
+                                @foreach($faqs as $faq)
                                     <tr>
-                                        <th>{{$package->id}}</th>
-                                        <th>{{$package->name}}</th>
-                                        <th>{{$package->col_1}}</th>
-                                        <th>{{$package->col_2}}</th>
-                                        <th>{{$package->col_3}}</th>
-                                        <th>{{$package->col_4}}</th>
-                                        <th>{{$package->col_5}}</th>
-                                        <th>{{$package->col_6}}</th>
-                                        <th>{{$package->col_7}}</th>
-                                        <th>{{$package->col_8}}</th>
+                                        <th>{{$faq->id}}</th>
+                                        <th>{{Str::limit($faq->question,30,'...')}}</th>
+                                        <th>{{Str::limit($faq->answer,50,'...')}}</th>
+
                                         <th>
-                                            <a href="{{route('package.edit',$package)}}"><i class="fa fa-edit"></i></a>
-                                            <form method="POST" action="{{route('package.destroy',$package)}}">
+                                            <a href="{{route('faq.edit',$faq)}}"><i class="fa fa-edit"></i></a>
+                                            <form method="POST" action="{{route('faq.destroy',$faq)}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button style="border: none;background-color: transparent;color: grey;" type="submit"><i class="fa fa-trash"></i></button>
@@ -79,15 +65,8 @@
                                 <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Attribute 1</th>
-                                    <th>Attribute 2</th>
-                                    <th>Attribute 3</th>
-                                    <th>Attribute 4</th>
-                                    <th>Attribute 5</th>
-                                    <th>Attribute 6</th>
-                                    <th>Attribute 7</th>
-                                    <th>Attribute 8</th>
+                                    <th>Question</th>
+                                    <th>Answer</th>
                                     <th>Tools</th>
                                 </tr>
                                 </tfoot>

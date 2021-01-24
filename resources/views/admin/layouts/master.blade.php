@@ -30,58 +30,35 @@
 </head>
 <body class="dark">
 
-<!-- begin::preloader-->
-<div class="preloader">
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="50px" height="50px" viewBox="0 0 128 128"
-         xml:space="preserve">
-        <rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF"/>
-        <g>
-            <path d="M75.4 126.63a11.43 11.43 0 0 1-2.1-22.65 40.9 40.9 0 0 0 30.5-30.6 11.4 11.4 0 1 1 22.27 4.87h.02a63.77 63.77 0 0 1-47.8 48.05v-.02a11.38 11.38 0 0 1-2.93.37z"
-                  fill="#000000" fill-opacity="1"/>
-            <animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64"
-                              dur="500ms" repeatCount="indefinite">
-            </animateTransform>
-        </g>
-    </svg>
-</div>
-<!-- end::preloader -->
-
 <!-- begin::navigation -->
 <div class="navigation">
 
     <!-- begin::logo -->
     <div id="logo">
-        <a href="index.html">
-            <img class="logo" src="assets/media/image/logo.png" alt="logo">
-            <img class="logo-sm" src="assets/media/image/logo-sm.png" alt="small logo">
-            <img class="logo-dark" src="assets/media/image/logo-dark.png" alt="dark logo">
+        <a href="{{route('admin.index')}}">
+            <img class="logo" src="{{asset('storage/images/logo/'.$home->logo)}}" alt="logo">
+            <img class="logo-sm" src="{{asset('storage/images/logo/'.$home->logo)}}" alt="small logo">
+            <img class="logo-dark" src="{{asset('storage/images/logo/'.$home->logo)}}" alt="dark logo">
         </a>
     </div>
     <!-- end::logo -->
 
     <!-- begin::navigation header -->
     <header class="navigation-header">
-        <figure class="avatar avatar-state-success">
-            <img src="assets/media/image/user/man_avatar3.jpg" class="rounded-circle" alt="image">
-        </figure>
         <div>
-            <h5>Nikos Pedlow</h5>
+            <h5>{{Auth::user()->name}}</h5>
             <p class="text-muted">Administrator</p>
             <ul class="nav">
+
                 <li class="nav-item">
-                    <a href="profile.html" class="btn nav-link bg-info-bright" title="Profile" data-toggle="tooltip">
-                        <i data-feather="user"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="btn nav-link bg-success-bright" title="Settings" data-toggle="tooltip">
-                        <i data-feather="settings"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.html" class="btn nav-link bg-danger-bright" title="Logout" data-toggle="tooltip">
+                    <a class="btn nav-link bg-danger-bright" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                         <i data-feather="log-out"></i>
                     </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
                 </li>
             </ul>
         </div>
@@ -115,9 +92,9 @@
             <!-- begin::header-logo -->
             <li class="nav-item" id="header-logo">
                 <a href="index.html">
-                    <img class="logo" src="assets/media/image/logo.png" alt="logo">
-                    <img class="logo-sm" src="assets/media/image/logo-sm.png" alt="small logo">
-                    <img class="logo-dark" src="assets/media/image/logo-dark.png" alt="dark logo">
+                    <img class="logo" src="{{asset('storage/images/logo/'.$home->logo)}}" alt="logo">
+                    <img class="logo-sm" src="{{asset('storage/images/logo/'.$home->logo)}}" alt="small logo">
+                    <img class="logo-dark" src="{{asset('storage/images/logo/'.$home->logo)}}" alt="dark logo">
                 </a>
             </li>
             <!-- end::header-logo -->
@@ -137,14 +114,8 @@
     <!-- begin::footer -->
     <footer>
         <div class="container">
-            <div>© 2019 Protable v1.0.0 Made by <a href="http://laborasyon.com/">Laborasyon</a></div>
-            <div>
-                <nav class="nav">
-                    <a href="https://themeforest.net/licenses/standard" class="nav-link">Licenses</a>
-                    <a href="#" class="nav-link">Change Log</a>
-                    <a href="#" class="nav-link">Get Help</a>
-                </nav>
-            </div>
+            <div>© Copyright DU 2021 All Rights Reserved.</div>
+
         </div>
     </footer>
     <!-- end::footer -->

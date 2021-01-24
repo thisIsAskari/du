@@ -107,7 +107,7 @@
     <div class="navbar-area">
         <div class="bahama-mobile-nav">
             <div class="logo">
-                <a href="index.html">
+                <a href="{{route('home')}}">
                     @if($home->logo != null)
                         <img src="{{asset('/storage/images/logo/'.$home->logo)}}" alt="logo">
                     @endif
@@ -129,6 +129,17 @@
                             <li class="nav-item"><a href="{{route('aboutus')}}" class="nav-link">About us</a></li>
                             <li class="nav-item"><a href="{{route('services')}}" class="nav-link">Services </a></li>
                             <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+                            @if(Auth::check())
+                                <li class="nav-item"><a href="{{route('admin.index')}}" class="nav-link">Admin Panel</a></li>
+                                <li class="nav-item"><a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @endif
                         </ul>
 
                     </div>
@@ -154,8 +165,10 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <div class="logo">
-                        <a href="#"><img src="{{asset('/storage/image/otherImage'.$home->section_three_image)}}" alt="image"></a>
-                        <p>{{$home->section_three_about}}</p>
+                        @if($home->logo != null)
+                            <a href="{{route('aboutus')}}"><img src="{{asset('/storage/images/logo/'.$home->logo)}}"></a>
+                        @endif
+                        <p>{{Str::limit($home->section_three_about,40,'...')}}</p>
                     </div>
                 </div>
             </div>
@@ -190,11 +203,11 @@
                     <h3>Get In Touch</h3>
                     <div class="widget-contact-info">
                         <p>
-                            <a href="#">1 (800) 216 20 20</a>
+                            <a>{{$home->contact}}</a>
                             <span>(Customer service and support)</span>
-                            <a href="#">1 (800) 216 20 20</a>
+                            <a href="{{route('contact')}}">Contact Us</a>
                             <span>(For new customers)</span>
-                            1600 Harrison ave, office 203 New York, NY 309090
+
                         </p>
                     </div>
                 </div>
@@ -203,7 +216,7 @@
     </div>
     <div class="copyright-area">
         <div class="container">
-            <p><i class="far fa-copyright"></i> Copyright Bahama 2019 All Rights Reserved</p>
+            <p><i class="far fa-copyright"></i>© Copyright DU 2021 All Rights Reserved</p>
         </div>
     </div>
 </footer>
